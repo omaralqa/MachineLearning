@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11862,7 +11862,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -12005,7 +12005,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12133,9 +12133,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Answer:"><strong>Answer:</strong><a class="anchor-link" href="#Answer:">&#182;</a></h4><p>sample #1 looks like a hotel that is demanding Milk more than average</p>
-<p>sample #2 looks like a market that is buying too much Fresh.</p>
-<p>sample #3 looks like a restaurant since they have high purchases for Milk, Grocery and Detergents_Paper</p>
+<h4 id="Answer:"><strong>Answer:</strong><a class="anchor-link" href="#Answer:">&#182;</a></h4><p>Sample#1 looks like a cafe that is demanding Milk more than average. Comparing the total purchases of Sample#1 with the mean purchase per customer in the dataset, we see that sample#1 is purchasing a total of 8259 of milk which is higher than the mean 5796 purchase per customer. Other categroeis are either the same as the mean or less.</p>
+<p>Sample#2 looks like a market that has high purchasing in all categories compared to the mean purchases per customer in the dataset. Comparing the total purchases of Sample#2 with the mean purchase per customer in the datset, we can see that Sample#2 has higher purchasing in all categories compared to the mean purchase in each category per customer in the dataset.</p>
+<p>sample #3 looks like a restaurant that is purchasing Milk, Grocery and Detergents_Paper higher than the mean purchases per customer in the dataset. Comparing the total purchases of Sample#3 with the mean purchase per customer in the dataset, we can see that the sample customer demands for Milk, Grocery and detergents paper much more than the mean purchases per customer in those categories.</p>
 
 </div>
 </div>
@@ -12161,17 +12161,18 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
 <span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">new_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Frozen&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">new_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">]</span>
 <span class="c1"># Split the data into training and testing sets(0.25) using the given feature as the target</span>
 <span class="c1"># Set a random state.</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">new_data</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Create a decision tree regressor and fit it to the training set</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -12197,7 +12198,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.8562652939395453
+<pre>0.7492791439437642
 </pre>
 </div>
 </div>
@@ -12226,9 +12227,10 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>I'm attempting to predict the 'Frozen' feature</li>
-<li>A very high score of 0.85</li>
-<li>I don't think there's any correlations between customers' spending habits and their spending on Frozens</li>
+<li>I'm attempting to predict the 'Detergents_Paper' feature</li>
+<li>Predication Score is 0.75</li>
+<li>Yes, I think there is a correlation between high spending customers on detergents paper with those whom host their own customers and need to clean frequnetly. This may include a restaurant, cafe, etc...
+Therefore, I expect to see customers with high spending on detergents paper to be high spending on either milk, grocery or both.</li>
 </ul>
 
 </div>
@@ -12245,7 +12247,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -12324,7 +12326,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -12341,13 +12343,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[89]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a17888d30&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11cccba58&gt;</pre>
 </div>
 
 </div>
@@ -12411,7 +12413,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -12475,7 +12477,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[102]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -12582,7 +12584,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[116]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
@@ -12594,7 +12596,7 @@ Once you have performed this implementation, the dataset will be stored in the v
     <span class="n">Q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="mi">75</span><span class="p">)</span>
     
     <span class="c1"># TODO: Use the interquartile range to calculate an outlier step (1.5 times the interquartile range)</span>
-    <span class="n">step</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span><span class="p">)</span>
     
     <span class="c1"># Display the outliers</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data points considered outliers for the feature &#39;</span><span class="si">{}</span><span class="s2">&#39;:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span>
@@ -12622,229 +12624,81 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Data points considered outliers for the feature &#39;Fresh&#39;:
-         Fresh       Milk    Grocery    Frozen  Detergents_Paper  Delicatessen
-53    6.196444   9.256556   9.352881  6.612041          8.632484      5.411646
-65    4.442651   9.950323  10.732651  3.583519         10.095388      7.260523
-66    2.197225   7.335634   8.911530  5.164786          8.151333      3.295837
-81    5.389072   9.163249   9.575192  5.645447          8.964184      5.049856
-95    1.098612   7.979339   8.740657  6.086775          5.407172      6.563856
-96    3.135494   7.869402   9.001839  4.976734          8.262043      5.379897
-97    5.998937   5.537334   6.413459  6.651572          3.988984      4.143135
-98    6.220590   4.718499   6.656727  6.796824          4.025352      4.882802
-128   4.941642   9.087834   8.248791  4.955827          6.967909      1.098612
-159   5.872118   8.949495   9.594378  5.986452          8.996776      5.713733
-170   5.560682   9.068201   9.505246  7.017506          8.855806      5.777652
-171   5.298317  10.160530   9.894245  6.478510          9.079434      8.740337
-173   6.242223   8.945984   9.893690  6.842683          9.193804      6.573680
-174   5.655992   7.096721   8.564268  7.830028          5.030438      7.273786
-181  11.627601  10.296441   9.806316  9.725855          8.506739      9.053687
-184   5.789960   6.822197   8.457443  4.304065          5.811141      2.397895
-193   5.192957   8.156223   9.917982  6.865891          8.633731      6.501290
-218   2.890372   8.923191   9.629380  7.158514          8.475746      8.759669
-266   6.349139   9.186355  10.007036  7.705713          8.493310      7.848934
-272   6.242223   9.026778   8.834774  6.270988          4.532599      6.946976
-299   6.095825   6.778785   7.630461  5.575949          5.669881      5.556828
-304   5.081404   8.917311  10.117510  6.424869          9.374413      7.787382
-305   5.493061   9.468001   9.088399  6.683361          8.271037      5.351858
-327   6.295266   6.801283   7.416980  6.025866          4.477337      6.257668
-338   1.098612   5.808142   8.856661  9.655090          2.708050      6.309918
-340   5.942799   8.300280   9.176784  5.961005          8.891649      7.223296
-342   5.541264   8.658345   8.686598  5.855072          8.432724      7.191429
-353   4.762174   8.742574   9.961898  5.429346          9.069007      7.013016
-355   5.247024   6.588926   7.606885  5.501258          5.214936      4.844187
-357   3.610918   7.150701  10.011086  4.919981          8.816853      4.700480
-392   6.249975   8.338067   8.188689  6.490724          4.804021      6.483107
-412   4.574711   8.190077   9.425452  4.584967          7.996317      4.127134
+        Fresh       Milk    Grocery    Frozen  Detergents_Paper  Delicatessen
+65   4.442651   9.950323  10.732651  3.583519         10.095388      7.260523
+66   2.197225   7.335634   8.911530  5.164786          8.151333      3.295837
+81   5.389072   9.163249   9.575192  5.645447          8.964184      5.049856
+95   1.098612   7.979339   8.740657  6.086775          5.407172      6.563856
+96   3.135494   7.869402   9.001839  4.976734          8.262043      5.379897
+128  4.941642   9.087834   8.248791  4.955827          6.967909      1.098612
+171  5.298317  10.160530   9.894245  6.478510          9.079434      8.740337
+193  5.192957   8.156223   9.917982  6.865891          8.633731      6.501290
+218  2.890372   8.923191   9.629380  7.158514          8.475746      8.759669
+304  5.081404   8.917311  10.117510  6.424869          9.374413      7.787382
+305  5.493061   9.468001   9.088399  6.683361          8.271037      5.351858
+338  1.098612   5.808142   8.856661  9.655090          2.708050      6.309918
+353  4.762174   8.742574   9.961898  5.429346          9.069007      7.013016
+355  5.247024   6.588926   7.606885  5.501258          5.214936      4.844187
+357  3.610918   7.150701  10.011086  4.919981          8.816853      4.700480
+412  4.574711   8.190077   9.425452  4.584967          7.996317      4.127134
 Data points considered outliers for the feature &#39;Milk&#39;:
-         Fresh       Milk    Grocery     Frozen  Detergents_Paper  \
-23   10.180096  10.502956   9.999661   8.547528          8.374938   
-47   10.702480  10.901524  10.925417   8.959569         10.092909   
-61   10.489662  10.555005  10.995377   8.087640         10.192456   
-85    9.687630  10.740670  11.437986   6.933423         10.617099   
-86   10.039983  11.205013  10.377047   6.894670          9.906981   
-97    5.998937   5.537334   6.413459   6.651572          3.988984   
-98    6.220590   4.718499   6.656727   6.796824          4.025352   
-122   9.410174   5.303305   5.501258   7.596392          3.218876   
-154   6.432940   4.007333   4.919981   4.317488          1.945910   
-183  10.514529  10.690808   9.911952  10.505999          5.476464   
-191   9.519588   5.686975   7.230563   6.791221          3.761200   
-269   9.630234   5.552960   7.037028   7.830426          5.808142   
-289  10.663966   5.655992   6.154858   7.235619          3.465736   
-356  10.029503   4.897840   5.384495   8.057377          2.197225   
-
-     Delicatessen  
-23       9.712509  
-47       8.774158  
-61       7.609367  
-85       7.987524  
-86       6.805723  
-97       4.143135  
-98       4.882802  
-122      6.756932  
-154      2.079442  
-183     10.777768  
-191      4.430817  
-269      5.318120  
-289      3.091042  
-356      6.306275  
-Data points considered outliers for the feature &#39;Grocery&#39;:
          Fresh       Milk    Grocery    Frozen  Detergents_Paper  Delicatessen
-47   10.702480  10.901524  10.925417  8.959569         10.092909      8.774158
-61   10.489662  10.555005  10.995377  8.087640         10.192456      7.609367
-75    9.923192   7.036148   1.098612  8.390949          1.098612      6.882437
-85    9.687630  10.740670  11.437986  6.933423         10.617099      7.987524
-122   9.410174   5.303305   5.501258  7.596392          3.218876      6.756932
-131   7.650169   6.378426   5.749393  5.846439          4.248495      5.736572
+86   10.039983  11.205013  10.377047  6.894670          9.906981      6.805723
+98    6.220590   4.718499   6.656727  6.796824          4.025352      4.882802
 154   6.432940   4.007333   4.919981  4.317488          1.945910      2.079442
-161   9.428190   6.291569   5.645447  6.995766          1.098612      7.711101
-275   6.522093   7.383989   5.407172  6.759255          4.564348      5.937536
-333   9.055439   8.513185  11.116886  4.875197         10.548022      7.102499
 356  10.029503   4.897840   5.384495  8.057377          2.197225      6.306275
+Data points considered outliers for the feature &#39;Grocery&#39;:
+        Fresh      Milk   Grocery    Frozen  Detergents_Paper  Delicatessen
+75   9.923192  7.036148  1.098612  8.390949          1.098612      6.882437
+154  6.432940  4.007333  4.919981  4.317488          1.945910      2.079442
 Data points considered outliers for the feature &#39;Frozen&#39;:
-         Fresh       Milk    Grocery     Frozen  Detergents_Paper  \
-16    6.927558   9.084324   9.402695   4.897840          8.413609   
-38    8.431853   9.663261   9.723703   3.496508          8.847360   
-57    8.597297   9.203618   9.257892   3.637586          8.932213   
-59    8.722091   8.586719   8.992184   4.859812          8.033983   
-60    9.058354   8.021256   8.968778   4.564348          8.317522   
-65    4.442651   9.950323  10.732651   3.583519         10.095388   
-93    9.333796   8.035926   7.631432  10.463360          4.262680   
-96    3.135494   7.869402   9.001839   4.976734          8.262043   
-103  10.934570   8.161660   9.094480   9.799681          7.299797   
-106   7.282074   8.754161   9.278373   4.890349          8.829080   
-128   4.941642   9.087834   8.248791   4.955827          6.967909   
-138   9.513182   8.356320   8.523970   5.043425          5.517453   
-144   9.843047   8.209852   7.594884   4.770685          6.246107   
-145  10.000569   9.034080  10.457143   3.737670          9.440738   
-154   6.432940   4.007333   4.919981   4.317488          1.945910   
-175   7.759187   8.967632   9.382106   3.951244          8.341887   
-183  10.514529  10.690808   9.911952  10.505999          5.476464   
-184   5.789960   6.822197   8.457443   4.304065          5.811141   
-196  10.329539   8.883086   8.496378   9.836867          6.637258   
-221   8.593413   8.923058   9.272940   4.510860          8.334952   
-264   6.978214   9.177714   9.645041   4.110874          8.696176   
-325  10.395650   9.728181   9.519735  11.016479          7.148346   
-333   9.055439   8.513185  11.116886   4.875197         10.548022   
-357   3.610918   7.150701  10.011086   4.919981          8.816853   
-379   8.305978   8.549467   9.248695   4.867534          6.700731   
-403  10.150582   9.306196   8.434681   4.844187          6.448889   
-412   4.574711   8.190077   9.425452   4.584967          7.996317   
-413   8.513787   8.488588   8.799812   9.790655          6.815640   
-418   6.492240   9.047115   9.832099   4.890349          8.815815   
-420   8.402007   8.569026   9.490015   3.218876          8.827321   
-429   9.060331   7.467371   8.183118   3.850148          4.430817   
-439   7.932721   7.437206   7.828038   4.174387          6.167516   
-
-     Delicatessen  
-16       6.984716  
-38       6.070738  
-57       7.156177  
-59       7.379632  
-60       5.416100  
-65       7.260523  
-93       7.900266  
-96       5.379897  
-103      7.823246  
-106      7.512618  
-128      1.098612  
-138      8.092851  
-144      5.303305  
-145      8.396155  
-154      2.079442  
-175      7.436617  
-183     10.777768  
-184      2.397895  
-196      7.964156  
-221      5.476464  
-264      7.142827  
-325      8.632128  
-333      7.102499  
-357      4.700480  
-379      5.187386  
-403      5.662960  
-412      4.127134  
-413      7.797702  
-418      6.654153  
-420      7.239215  
-429      7.824446  
-439      3.951244  
+         Fresh      Milk    Grocery     Frozen  Detergents_Paper  Delicatessen
+38    8.431853  9.663261   9.723703   3.496508          8.847360      6.070738
+57    8.597297  9.203618   9.257892   3.637586          8.932213      7.156177
+65    4.442651  9.950323  10.732651   3.583519         10.095388      7.260523
+145  10.000569  9.034080  10.457143   3.737670          9.440738      8.396155
+175   7.759187  8.967632   9.382106   3.951244          8.341887      7.436617
+264   6.978214  9.177714   9.645041   4.110874          8.696176      7.142827
+325  10.395650  9.728181   9.519735  11.016479          7.148346      8.632128
+420   8.402007  8.569026   9.490015   3.218876          8.827321      7.239215
+429   9.060331  7.467371   8.183118   3.850148          4.430817      7.824446
+439   7.932721  7.437206   7.828038   4.174387          6.167516      3.951244
 Data points considered outliers for the feature &#39;Detergents_Paper&#39;:
-         Fresh      Milk   Grocery    Frozen  Detergents_Paper  Delicatessen
-75    9.923192  7.036148  1.098612  8.390949          1.098612      6.882437
-154   6.432940  4.007333  4.919981  4.317488          1.945910      2.079442
-161   9.428190  6.291569  5.645447  6.995766          1.098612      7.711101
-204   7.578657  6.792344  8.561401  7.232010          1.609438      7.191429
-338   1.098612  5.808142  8.856661  9.655090          2.708050      6.309918
-356  10.029503  4.897840  5.384495  8.057377          2.197225      6.306275
-402  10.186371  8.466531  8.535230  5.393628          2.302585      5.828946
+        Fresh      Milk   Grocery    Frozen  Detergents_Paper  Delicatessen
+75   9.923192  7.036148  1.098612  8.390949          1.098612      6.882437
+161  9.428190  6.291569  5.645447  6.995766          1.098612      7.711101
 Data points considered outliers for the feature &#39;Delicatessen&#39;:
          Fresh       Milk    Grocery     Frozen  Detergents_Paper  \
-23   10.180096  10.502956   9.999661   8.547528          8.374938   
-25    9.690604   8.349957   8.935245   5.303305          8.294799   
-42    9.291920   8.929965   9.613202   5.236442          8.839132   
-43    6.445720   9.314250  10.085726   6.668228          9.162095   
-44    9.176784   8.857515   9.256365   6.293419          8.437717   
 66    2.197225   7.335634   8.911530   5.164786          8.151333   
-71    9.814164   7.143618   9.954276   8.589142          8.336390   
-87   10.675099   8.522181   9.001716   8.750208          7.364547   
-88    8.970051   6.295266   8.304495   9.183483          5.105945   
-97    5.998937   5.537334   6.413459   6.651572          3.988984   
 109   7.248504   9.724899  10.274568   6.511745          6.728629   
 128   4.941642   9.087834   8.248791   4.955827          6.967909   
 137   8.034955   8.997147   9.021840   6.493754          6.580639   
 142  10.519646   8.875147   9.018332   8.004700          2.995732   
 154   6.432940   4.007333   4.919981   4.317488          1.945910   
-181  11.627601  10.296441   9.806316   9.725855          8.506739   
 183  10.514529  10.690808   9.911952  10.505999          5.476464   
 184   5.789960   6.822197   8.457443   4.304065          5.811141   
 187   7.798933   8.987447   9.192075   8.743372          8.148735   
-190   9.737197   8.740337   7.591357   8.900004          4.770685   
-191   9.519588   5.686975   7.230563   6.791221          3.761200   
 203   6.368187   6.529419   7.703459   6.150603          6.860664   
 233   6.871091   8.513988   8.106515   6.842683          6.013715   
-270   8.459564   6.939254   6.882437   8.612503          5.283204   
 285  10.602965   6.461468   8.188689   6.948897          6.077642   
 289  10.663966   5.655992   6.154858   7.235619          3.465736   
-303   7.862882   8.212840   9.534523   6.198479          9.217217   
-318   9.375855   7.905810   8.176954   7.659643          6.559615   
 343   7.431892   8.848509  10.177932   7.283448          9.646593   
-375   8.672657   7.279319   7.057898   6.391917          6.165418   
-412   4.574711   8.190077   9.425452   4.584967          7.996317   
-439   7.932721   7.437206   7.828038   4.174387          6.167516   
 
      Delicatessen  
-23       9.712509  
-25       4.043051  
-42       3.828641  
-43       4.276666  
-44       4.174387  
 66       3.295837  
-71       9.579971  
-87       9.571575  
-88       3.828641  
-97       4.143135  
 109      1.098612  
 128      1.098612  
 137      3.583519  
 142      1.098612  
 154      2.079442  
-181      9.053687  
 183     10.777768  
 184      2.397895  
 187      1.098612  
-190      4.158883  
-191      4.430817  
 203      2.890372  
 233      1.945910  
-270      4.025352  
 285      2.890372  
 289      3.091042  
-303      4.077537  
-318      3.931826  
 343      3.610918  
-375      4.248495  
-412      4.127134  
-439      3.951244  
 </pre>
 </div>
 </div>
@@ -12906,7 +12760,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with the same number of dimensions as features</span>
@@ -12968,22 +12822,13 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>0.7</li>
-<li>0.9</li>
+<li>The total variance in the data that is explained is 70% by the first and second components</li>
+<li>The total variance in the data that is explained is 90% by the first four components</li>
 </ul>
-<p>-</p>
-
-<pre><code>    Dimension 1 has an explained variance of 0.4424 and is considered the highest. We can see from the above figure that the features Fresh and Frozen have positive feature weights, well represented, while the other features have negative feature weights.
-
-    Dimension 2 has an explained variance of 0.2766. We can see from the above figure that all features have negative feature weights
-
-    Dimension 3 has an explained variance of 0.1162. We can see from the above figure that the features Frozen and Delicatessen have positive feature weights, well represented, while the other features have negative feature weights. 
-
-    Dimension 4 has an explained variance of 0.0962. We can see from the above figure that the features Frozen and Detergents_Paper have positive feature weights, well represented, while the other features have negative feature weights. 
-
-    Dimension 5 has an explained variance of 0.0458. We can see from the above figure that the features Milk and Grocery have positive feature weights, well represented, while the other features have negative feature weights.
-
-    Dimension 6 has an explained variance of 0.0229. We can see from the above figure that the features Milk and Detergents_Paper have positive feature weights, well represented, while the other features have negative feature weights.</code></pre>
+<p>Dimension 1 has an explained variance of 0.4424 which can explain 44.2% of the variance. In this component, we can claim that a positive data point indicates that customer is purchasing Fresh and Frozen. While a negative data point indicates a customer purchasing Detergents Paper, Grocery, .. etc.</p>
+<p>Dimension 2 has an explained variance of 0.276 which can explain 27.6% of the variance. In this component, we can claim that the least negative data point indicates a customer purchasing any of the features 'Detergents Paper', 'Grocery', .. etc.</p>
+<p>Dimension 3 has an explained variance of 0.1162 which can explain 11.62% of the variance. In this component, we can claim that a positive data point indicates that customer is purchasing Delicatessen, Frozen, or Milk. While a negative data point indicates a customer purchasing Detergents Paper, Grocery, or Fresh.</p>
+<p>Dimension 4 has an explained variance of 0.0962 which can explain 9.62% of the variance. In this component, we can claim that a positive data point indicates that customer is purchasing Detergents Paper, Frozen, Grocery, or Milk. While a negative data point indicates a customer purchasing Delicatessen, or Fresh.</p>
 
 </div>
 </div>
@@ -12999,7 +12844,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -13103,7 +12948,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -13136,7 +12981,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[141]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
@@ -13219,7 +13064,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[142]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -13236,13 +13081,13 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[142]:</div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a18dfbc18&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11c1bf550&gt;</pre>
 </div>
 
 </div>
@@ -13344,12 +13189,13 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[159]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">silhouette_score</span>
-<span class="c1"># TODO: Apply your clustering algorithm of choice to the reduced data </span>
+
+<span class="c1"># TODO: Apply your clustering algorithm of choice to the reduced data</span>
 <span class="n">clusterer</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
 
 <span class="c1"># TODO: Predict the cluster for each data point</span>
@@ -13426,7 +13272,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[160]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
@@ -13476,7 +13322,7 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[166]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
@@ -13580,13 +13426,14 @@ Data points considered outliers for the feature &#39;Delicatessen&#39;:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
+<p>Mean values for each product category:</p>
 
 <pre><code>     Fresh         Milk         Grocery     Frozen        Detergents_Paper  Delicatessen
 mean 12000.297727  5796.265909  7951.277273 3071.931818   2881.493182       1524.870455
 
 </code></pre>
-<p>Segment 0 looks like a restaurant since they're highly spending on Fresh more than average.</p>
-<p>Segment 1 looks like a market since they're highly spending on Milk and grocery more than average.</p>
+<p>Segment 0 looks like a mini restaurant since they're highly spending on Fresh more than average.</p>
+<p>Segment 1 looks like a cafe since they're highly spending on Milk and grocery more than average.</p>
 
 </div>
 </div>
@@ -13606,11 +13453,12 @@ mean 12000.297727  5796.265909  7951.277273 3071.931818   2881.493182       1524
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[164]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the predictions</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_preds</span><span class="p">):</span>
+    
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample point&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;predicted to be in Cluster&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
 </pre></div>
 
@@ -13645,8 +13493,8 @@ Sample point 2 predicted to be in Cluster 1
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>All sample point are customer segment of restaurant</li>
-<li>Yes</li>
+<li>All sample point are from Cafe customer segment</li>
+<li>Yes they are consistent. We expect highly spending customers on Milk and Grocery to be a Cafe establishment. Sample points with negative values for both Dimension 1 and Dimension 2 are part of Cluster 1 that are highly spending on Milk, Grocery and Detergent Papers</li>
 </ul>
 
 </div>
@@ -13687,7 +13535,8 @@ Sample point 2 predicted to be in Cluster 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>We cannot assume the change affects all customers equally. Some customer maybe okay with the change while others maybe negatively affected. We can run a cross check on the customers spending for the six categories before and after the delivery service change. If we see a drop on the spending for the categories for a specific customer, then this may flag that customer is negativly affected.</p>
+<p>We cannot assume the change affects all customers equally. Some customer maybe okay with the change while others maybe negatively affected.</p>
+<p>Using A/B testing method to test effectiveness of delivery service change, we can divide customers per segment into two groups. First group will receive delivery change to 3 days a week while Second group remains 5 days a week. Then, we can monitor customer purchasing per segment and conclude to change the delivery service for certain segments only if the group of 3 days delivery schedule is not negativlely effected</p>
 
 </div>
 </div>
